@@ -9,12 +9,13 @@ public class SC_FPSController : MonoBehaviour
     public float jumpHeight = 1.5f;
     public float gravity = -20f;
 
-    public float lookSpeed = 0.05f;
+    public float lookSpeed = 0.01f;
     public float lookXLimit = 80f;
-
+    public float m_Sensitivity = 2.0f;
+    public float rotationDamping = 10.0f;
     public Camera playerCamera;
 
-    // Marken måste ha detta layer
+    // Marken mï¿½ste ha detta layer
     public LayerMask groundMask;
 
     CharacterController controller;
@@ -59,11 +60,12 @@ public class SC_FPSController : MonoBehaviour
             ? runningSpeed
             : walkingSpeed;
 
-        Vector3 movement =
-            transform.forward * input.y +
-            transform.right * input.x;
-
-        controller.Move(movement.normalized * speed * Time.deltaTime);
+        // Move relative to camera facing direction
+        Vector3 moveDirection = playerCamera.transform.forward * input.y + playerCamera.transform.right * input.x;
+        moveDirection.y = 0f; // Keep movement flat on the ground
+        moveDirection = moveDirection.normalized;
+        
+        controller.Move(moveDirection * speed * Time.deltaTime);
 
         ////// HOPP
         if (isGrounded && velocity.y < 0f)
@@ -79,12 +81,14 @@ public class SC_FPSController : MonoBehaviour
         ////// MUS
         Vector2 mouse = Mouse.current.delta.ReadValue();
 
-        transform.Rotate(0f, mouse.x * lookSpeed, 0f);
+        // Multiply sensitivity for faster look speed
+        float lookMultiplier = m_Sensitivity;   
 
-        rotationX -= mouse.y * lookSpeed;
+        transform.Rotate(0f, mouse.x * lookSpeed * lookMultiplier, 0f);
+
+        rotationX -= mouse.y * lookSpeed * lookMultiplier; // Negated to fix inverted movement
         rotationX = Mathf.Clamp(rotationX, -lookXLimit, lookXLimit);
 
-        playerCamera.transform.localRotation =
-            Quaternion.Euler(rotationX, 0f, 0f);
+        playerCamera.transform.localEulerAngles = new Vector3(rotationX, transform.eulerAngles.y, 0f);
     }
 }

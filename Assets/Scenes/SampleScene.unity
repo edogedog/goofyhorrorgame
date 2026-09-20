@@ -5452,12 +5452,12 @@ MonoBehaviour:
   runningSpeed: 8
   jumpHeight: 2
   gravity: -30
-  lookSpeed: 2
+  lookSpeed: 0.05
   lookXLimit: 45
   playerCamera: {fileID: 1633395694}
   groundMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8
 --- !u!143 &1152365418
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6376,7 +6376,7 @@ GameObject:
   - component: {fileID: 1347754756}
   - component: {fileID: 1347754759}
   - component: {fileID: 1347754760}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
