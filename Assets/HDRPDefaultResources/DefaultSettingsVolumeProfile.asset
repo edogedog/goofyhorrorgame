@@ -1589,7 +1589,7 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 4.46
+    m_Value: -0.1
   multiplier:
     m_OverrideState: 1
     m_Value: 1
@@ -2154,7 +2154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877ec3e844f2ca46830012e8e79319b, type: 3}
   m_Name: PhysicallyBasedSky
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   rotation:
     m_OverrideState: 1
     m_Value: 0
@@ -2682,7 +2682,7 @@ MonoBehaviour:
     m_Value: 4
   cascadeShadowSplit0:
     m_OverrideState: 1
-    m_Value: 0.05
+    m_Value: 0.15
   cascadeShadowSplit1:
     m_OverrideState: 1
     m_Value: 0.15
