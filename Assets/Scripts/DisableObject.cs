@@ -9,7 +9,7 @@ public class DisableObject : MonoBehaviour
 
     void Update()
     {
-        if (Obj.active == true)
+        if (Obj.activeSelf == true)
         {
             StartCoroutine(DisableObj());
         }
