@@ -66,5 +66,9 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
     },
+<<<<<<< Updated upstream
     "dotnet.defaultSolution": "goofyhorrorgame.sln"
+=======
+    "dotnet.defaultSolution": "goofyhorrorgame.slnx"
+>>>>>>> Stashed changes
 }

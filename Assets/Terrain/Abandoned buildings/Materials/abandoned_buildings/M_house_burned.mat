@@ -7,8 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream:Assets/Terrain/Abandoned buildings/Materials/abandoned_buildings/M_house_burned.mat
   m_Name: M_house_burned
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+=======
+  m_Name: Decal
+  m_Shader: {fileID: -6465566751694194690, guid: 46dbf2cbbaf7e4252b3451a4e8065190, type: 3}
+>>>>>>> Stashed changes:Assets/Materials/Decal.mat
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
@@ -126,6 +131,7 @@ Material:
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
+<<<<<<< Updated upstream:Assets/Terrain/Abandoned buildings/Materials/abandoned_buildings/M_house_burned.mat
 --- !u!114 &7598900644677163653
 MonoBehaviour:
   m_ObjectHideFlags: 11
@@ -139,3 +145,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Editor::UnityEditor.Rendering.Universal.AssetVersion
   version: 10
+=======
+>>>>>>> Stashed changes:Assets/Materials/Decal.mat
