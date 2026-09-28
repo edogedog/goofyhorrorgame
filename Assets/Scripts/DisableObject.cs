@@ -1,23 +1,40 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DisableObject : MonoBehaviour
 {
     public GameObject Obj;
     public float activeTime;
-
+    
+    private bool isCoroutineRunning = false;
+    private bool isInitialized = false;
+    
+    void Start()
+    {
+        isInitialized = true;
+    }
+    
     void Update()
     {
-        if (Obj.activeSelf == true)
+        // Early exit if not initialized
+        if (!isInitialized)
+            return;
+            
+        // Only start coroutine once and avoid multiple starts
+        if (Obj != null && Obj.activeSelf == true && !isCoroutineRunning)
         {
             StartCoroutine(DisableObj());
+            isCoroutineRunning = true;
         }
     }
-
+    
     IEnumerator DisableObj()
     {
         yield return new WaitForSeconds(activeTime);
-        Obj.SetActive(false);
+        if (Obj != null)
+        {
+            Obj.SetActive(false);
+        }
+        isCoroutineRunning = false;
     }
 }

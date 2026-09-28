@@ -5,15 +5,22 @@ public class footstepsSounds : MonoBehaviour
 {
     public AudioSource walkSound;
     public AudioSource sprintSound;
+    
+    private bool isInitialized = false;
 
     void Start()
     {
         walkSound.Stop();
         sprintSound.Stop();
+        isInitialized = true;
     }
 
     void Update()
     {
+        // Early exit if not initialized
+        if (!isInitialized)
+            return;
+            
         if (Keyboard.current == null)
             return;
 
@@ -26,7 +33,7 @@ public class footstepsSounds : MonoBehaviour
         bool sprinting =
             moving && Keyboard.current.leftShiftKey.isPressed;
 
-        ////// GÅR
+        ////// Gï¿½R
         if (moving && !sprinting)
         {
             if (!walkSound.isPlaying)
@@ -44,7 +51,7 @@ public class footstepsSounds : MonoBehaviour
             walkSound.Stop();
         }
 
-        ////// STÅR STILL
+        ////// STï¿½R STILL
         else
         {
             walkSound.Stop();

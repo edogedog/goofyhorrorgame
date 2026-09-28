@@ -6,7 +6,7 @@ public class MonsterAI : MonoBehaviour
     public NavMeshAgent ai;
     public Animator anim;
     public Transform player;
-
+    
     [Header("Settings")]
     [SerializeField] float pathUpdateInterval = 0.5f;
     [SerializeField] float attackRange = 1.5f;
@@ -21,16 +21,37 @@ public class MonsterAI : MonoBehaviour
     [Header("Elevation")]
     [SerializeField] float maxElevationGap = 3f;
     [SerializeField] bool chaseOnGroundWhenElevated = true;
-
+    
     float lastPathTime;
     int lastPagesCollected;
     bool gameEnded;
+    private bool isInitialized = false;
+    
+    // Cache for performance
+    private NavMeshAgent cachedAi;
+    private Animator cachedAnim;
+    private Transform cachedPlayer;
+    private Vector3 lastPlayerPosition = Vector3.zero;
+    private float lastNavMeshSampleTime = 0f;
+    
+    void Start()
+    {
+        // Cache components for performance
+        cachedAi = ai;
+        cachedAnim = anim;
+        cachedPlayer = player;
+        
+        // Initialize last values
+        lastPagesCollected = pickupLetter.pagesCollected;
+        isInitialized = true;
+    }
 
     void Update()
     {
-        if (ai == null || anim == null || player == null)
+        // Early exit if components are not properly set or not initialized
+        if (cachedAi == null || cachedAnim == null || cachedPlayer == null || !isInitialized)
             return;
-
+        
         // Track pages collected to update speed only when it changes
         int currentPages = pickupLetter.pagesCollected;
         if (currentPages != lastPagesCollected)
@@ -38,57 +59,65 @@ public class MonsterAI : MonoBehaviour
             lastPagesCollected = currentPages;
             UpdateSpeed(currentPages);
         }
-
+        
         // Throttle path updates to every pathUpdateInterval seconds
         if (Time.time - lastPathTime < pathUpdateInterval)
             return;
-
+        
         lastPathTime = Time.time;
-
-        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-
+        
+        float distanceToPlayer = Vector3.Distance(transform.position, cachedPlayer.position);
+        
         if (distanceToPlayer < attackRange)
         {
             HandlePlayerDeath();
             return;
         }
-
+        
         if (distanceToPlayer < chaseRange)
         {
             Vector3 playerNavPos = GetPlayerNavMeshPosition();
-            ai.SetDestination(playerNavPos);
+            cachedAi.SetDestination(playerNavPos);
         }
     }
-
+    
     Vector3 GetPlayerNavMeshPosition()
     {
-        Vector3 playerPos = player.position;
+        Vector3 playerPos = cachedPlayer.position;
         Vector3 monsterPos = transform.position;
         
-        NavMeshHit hit;
-        
-        if(NavMesh.SamplePosition(playerPos, out hit, navMeshHeightSampleDistance, navMeshAreaMask))
+        // Only sample navmesh every few seconds to reduce overhead
+        if (Time.time - lastNavMeshSampleTime > 0.5f)
         {
-            float elevationDiff = Mathf.Abs(hit.position.y - monsterPos.y);
+            NavMeshHit hit;
             
-            if(chaseOnGroundWhenElevated && elevationDiff > maxElevationGap)
+            if(NavMesh.SamplePosition(playerPos, out hit, navMeshHeightSampleDistance, navMeshAreaMask))
             {
-                Debug.Log("Player is elevated (" + elevationDiff.ToString("F2") + " units). Chasing at ground level.");
-                return new Vector3(hit.position.x, monsterPos.y, hit.position.z);
+                float elevationDiff = Mathf.Abs(hit.position.y - monsterPos.y);
+                
+                if(chaseOnGroundWhenElevated && elevationDiff > maxElevationGap)
+                {
+                    Debug.Log("Player is elevated (" + elevationDiff.ToString("F2") + " units). Chasing at ground level.");
+                    lastNavMeshSampleTime = Time.time;
+                    return new Vector3(hit.position.x, monsterPos.y, hit.position.z);
+                }
+                
+                lastNavMeshSampleTime = Time.time;
+                return hit.position;
             }
             
-            return hit.position;
+            Debug.Log("No NavMesh found near player position. Chasing at exact position.");
         }
         
-        Debug.Log("No NavMesh found near player position. Chasing at exact position.");
+        // Return cached position if navmesh sampling is skipped
         return playerPos;
     }
-
+    
     void UpdateSpeed(int pages)
     {
         float speed;
         float animSpeed;
-
+        
         switch (pages)
         {
             case 0:
@@ -132,22 +161,22 @@ public class MonsterAI : MonoBehaviour
                 animSpeed = 1.6f;
                 break;
         }
-
-        ai.speed = speed;
-        anim.speed = animSpeed;
+        
+        cachedAi.speed = speed;
+        cachedAnim.speed = animSpeed;
     }
-
+    
     void HandlePlayerDeath()
     {
         if (gameEnded)
             return;
         gameEnded = true;
-
+        
         Debug.Log("Monster caught the player!");
-
+        
         Application.Quit();
     }
-
+    
     void ResetGame()
     {
         gameEnded = false;
