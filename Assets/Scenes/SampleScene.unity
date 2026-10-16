@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 99c9720ab356a0642a771bea13969a05
+  m_OcclusionCullingData: {fileID: 36300000, guid: f2811314ee88b484ab97c1aae013366e, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 51da36ec947183b4197d67ffed145397, type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: d807e16855aad1945b73295e18cb86d5, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -272,6 +272,10 @@ PrefabInstance:
     - target: {fileID: 877268463496945381, guid: b628039374c9fd547800c580c5d99cba, type: 3}
       propertyPath: m_Name
       value: Shed (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 877268463496945381, guid: b628039374c9fd547800c580c5d99cba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1403,7 +1407,7 @@ Transform:
   m_GameObject: {fileID: 208506304}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.50000006, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1451,7 +1455,7 @@ Light:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 23.761833
   m_Range: 40.2
-  m_SpotAngle: 96.67236
+  m_SpotAngle: 72.23765
   m_InnerSpotAngle: 1
   m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
@@ -3826,6 +3830,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Silo
       objectReference: {fileID: 0}
+    - target: {fileID: 5759197512861446858, guid: def7813de3031814aba5fd882b924c17, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4834,7 +4842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.RenderPipelines.HighDefinition.Runtime::UnityEngine.Rendering.HighDefinition.StaticLightingSky
   m_Profile: {fileID: 11400000, guid: 097c71e8e16615d40aa1d4383d4480f2, type: 2}
-  m_StaticLightingSkyUniqueID: 0
+  m_StaticLightingSkyUniqueID: 1
   m_StaticLightingCloudsUniqueID: 0
   m_StaticLightingVolumetricClouds: 0
   bounces: 2
@@ -7050,7 +7058,7 @@ Transform:
   m_GameObject: {fileID: 1152365416}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.72318184, z: -0, w: 0.6906577}
-  m_LocalPosition: {x: 166.49, y: 4.17, z: 128.19}
+  m_LocalPosition: {x: 172.132, y: 4.17, z: 122.952}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7338,6 +7346,10 @@ PrefabInstance:
     - target: {fileID: 6055148367421487550, guid: 8ee0175dc4b835a4b848fc736a271da1, type: 3}
       propertyPath: m_Name
       value: WindMill
+      objectReference: {fileID: 0}
+    - target: {fileID: 6055148367421487550, guid: 8ee0175dc4b835a4b848fc736a271da1, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6864583107484443396, guid: 8ee0175dc4b835a4b848fc736a271da1, type: 3}
       propertyPath: m_LocalScale.x
@@ -7827,6 +7839,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OldShed
       objectReference: {fileID: 0}
+    - target: {fileID: 541570453059442991, guid: a985d42015213ae4aa36d4e2ca9953b8, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 923198176671089557, guid: a985d42015213ae4aa36d4e2ca9953b8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 157.35313
@@ -7904,7 +7920,7 @@ MonoBehaviour:
   version: 2
   globalVolume: 0
   mode: 1
-  size: {x: 503.01, y: 61.44485, z: 503.01}
+  size: {x: 503.01, y: 74.20446, z: 503.01}
   overrideRendererFilters: 0
   minRendererVolumeSize: 0.1
   objectLayerMask:
@@ -7913,7 +7929,7 @@ MonoBehaviour:
   lowestSubdivLevelOverride: 0
   highestSubdivLevelOverride: 2
   overridesSubdivLevels: 0
-  mightNeedRebaking: 0
+  mightNeedRebaking: 1
   cachedTransform:
     e00: 1
     e01: 0
@@ -7922,7 +7938,7 @@ MonoBehaviour:
     e10: 0
     e11: 1
     e12: 0
-    e13: -29.484325
+    e13: -35.864132
     e20: 0
     e21: 0
     e22: 1
@@ -7931,7 +7947,7 @@ MonoBehaviour:
     e31: 0
     e32: 0
     e33: 1
-  cachedHashCode: 1797268508
+  cachedHashCode: 1758944766
   fillEmptySpaces: 1
 --- !u!4 &1306887905
 Transform:
@@ -7942,7 +7958,7 @@ Transform:
   m_GameObject: {fileID: 1306887903}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 250, y: 29.484327, z: 250}
+  m_LocalPosition: {x: 250, y: 35.864132, z: 250}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8763,7 +8779,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1477025107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8803,8 +8819,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 13
   m_Type: 1
-  m_Color: {r: 0.14831792, g: 0.20118372, b: 0.31132078, a: 1}
-  m_Intensity: 52.4
+  m_Color: {r: 0.11077724, g: 0.12436746, b: 0.15363872, a: 1}
+  m_Intensity: 0.71
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -8982,7 +8998,7 @@ MonoBehaviour:
   m_VolumetricShadowDimmer: 1
   m_ShadowFadeDistance: 10000
   m_UseContactShadow:
-    m_Override: 0
+    m_Override: 1
     m_UseOverride: 1
     m_Level: 0
   m_RayTracedContactShadow: 0
@@ -9012,7 +9028,7 @@ MonoBehaviour:
   m_ShadowVariant: 0
   m_ShadowPrecision: 0
   useOldInspector: 0
-  useVolumetric: 1
+  useVolumetric: 0
   featuresFoldout: 1
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
@@ -9314,6 +9330,10 @@ PrefabInstance:
     - target: {fileID: 877268463496945381, guid: b628039374c9fd547800c580c5d99cba, type: 3}
       propertyPath: m_Name
       value: Shed
+      objectReference: {fileID: 0}
+    - target: {fileID: 877268463496945381, guid: b628039374c9fd547800c580c5d99cba, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9970,7 +9990,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 1000
+  far clip plane: 90
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5
